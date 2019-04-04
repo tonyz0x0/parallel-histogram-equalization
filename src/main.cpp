@@ -69,9 +69,17 @@ int main( int argc, const char** argv ) {
 
     Mat img_hist_equalized_gpu = input_image.clone();
 
+    // Histogram Equalization
     histogram_gpu((unsigned char *) img_hist_equalized_gpu.data, 
                                     height, 
                                     width);
+
+    Mat sobel_gpu = Mat::zeros(width, height, CV_8U);
+
+    gpu_function((unsigned char *) input_image.data, 
+                           (unsigned char *) sobel_gpu.data, 
+                           height, 
+                           width);
 
     finish_gpu = CLOCK();
 
@@ -110,6 +118,7 @@ int main( int argc, const char** argv ) {
     imwrite ("input_baw.jpg", input_image); 
     imwrite ("output_cpu.jpg", img_hist_equalized_cpu);
     imwrite ("output_gpu.jpg", img_hist_equalized_gpu);
+    imwrite ("output_sobel_gpu.jpg", sobel_gpu);
 
     //waitKey(0); //wait for key press
 

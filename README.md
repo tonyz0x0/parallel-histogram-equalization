@@ -2,6 +2,8 @@
 
 A program that using CUDA and C++ to generate Histogram Equalization picture in parallel way.
 
+> Update: Add Sobel Detection CUDA program
+
 ## Goal
 ***
 
@@ -29,7 +31,6 @@ The basic algorithm for Histagram Equalization can be divided into four steps:
  4. Calculate the histogram equalization value with the given formula
 
  5. Put the calculated value back to generate new image data, and transfer it back to host memory
-
 
 ## Resources
 ***
